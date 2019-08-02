@@ -45,9 +45,13 @@ luasocket 3.0rc1-2 is now installed in /usr/local (license: MIT)
     * explicit blocks:  do-end  blocks
     
 1. [pass by value or reference?](https://stackoverflow.com/questions/6128152/function-variable-scope-pass-by-value-or-reference)
+
     > There are eight basic types in Lua: nil, boolean, number, string, function, userdata, thread, and table. ...
+
     > Lua's function, table, userdata and thread (coroutine) types are passed by reference. 
+
     > The other types (nil, booleans, numbers and strings) are passed by value. 
+
     > Or as some people like to put it; all types are passed by value, but function, table, userdata and thread are reference types.
 
 1. [self.__index = self](http://lua-users.org/lists/lua-l/2013-04/msg00617.html)
@@ -59,8 +63,8 @@ luasocket 3.0rc1-2 is now installed in /usr/local (license: MIT)
     end
    ```
    
-    > This is a common hack to save some memory.
-    > non-hack (three table) version：
+   > This is a common hack to save some memory.
+   > non-hack (three table) version：
    ```lua
    function Account:new (o)
           o = o or {}   -- create object if user does not provide one
