@@ -1,6 +1,19 @@
 # trial-lua
 lua learning
 
+## fucks
+
+1. ~= is not equals.
+
+    ```lua
+    if s ~= 'walternate' then  -- ~= is not equals.
+      -- Equality check is == like Python; ok for strs.
+      -- Calls with one string param don't need parens:
+      print 'not equals walternate'  -- Works fine.
+    end
+    ```
+
+1. todo
 
 ##
 
