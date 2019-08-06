@@ -12,7 +12,31 @@ lua learning
       print 'not equals walternate'  -- Works fine.
     end
     ```
+1. `...` [Variable Number of Arguments](https://www.lua.org/pil/5.2.html)
 
+    Assume a definition like
+    
+        function g (a, b, ...) end
+
+    Then, we have the following mapping from arguments to parameters:
+    
+        CALL            PARAMETERS
+
+        g(3)             a=3, b=nil, arg={n=0}
+        g(3, 4)          a=3, b=4, arg={n=0}
+        g(3, 4, 5, 8)    a=3, b=4, arg={5, 8; n=2}
+        
+    
+    [Forwarding ... to next function  like](https://github.com/thibaultcha/lua-resty-mlcache/blob/master/lib/resty/mlcache.lua)
+    
+    ```lua
+    function _M:get(key, opts, cb, ...)
+        return run_callback(self, key, namespaced_key, data, ttl, neg_ttl,
+                        went_stale, l1_serializer, resurrect_ttl,
+                        shm_set_tries, cb, ...)
+    end
+    ```
+    
 1. todo
 
 ##
