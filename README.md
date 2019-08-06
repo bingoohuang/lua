@@ -36,6 +36,41 @@ lua learning
                         shm_set_tries, cb, ...)
     end
     ```
+
+1. [table initializing](https://github.com/thibaultcha/lua-resty-mlcache/blob/master/lib/resty/mlcache.lua)
+
+    ```lua
+    local marshallers = {
+        shm_value = function(str_value, value_type, at, ttl)
+            return fmt("%d:%f:%f:%s", value_type, at, ttl, str_value)
+        end,
+
+        shm_nil = function(at, ttl)
+            return fmt("0:%f:%f:", at, ttl)
+        end,
+
+        [1] = function(number) -- number
+            return tostring(number)
+        end,
+
+        [2] = function(bool)   -- boolean
+            return bool and "true" or "false"
+        end,
+
+        [3] = function(str)    -- string
+            return str
+        end,
+
+        [4] = function(t)      -- table
+            local json, err = cjson.encode(t)
+            if not json then
+                return nil, "could not encode table value: " .. err
+            end
+
+            return json
+        end,
+    }
+    ```
     
 1. todo
 
