@@ -73,6 +73,8 @@ lua learning
     
 1. [What does # mean in Lua?](https://stackoverflow.com/questions/17974622/what-does-mean-in-lua)
     
+    [hash/hash key/hash mark #](https://zh.wikipedia.org/wiki/%E4%BA%95%E8%99%9F#cite_ref-2)
+    
     > That is the [length operator](http://www.lua.org/manual/5.1/manual.html#2.5.5):
 
     > The length operator is denoted by the unary operator #. The length of a string is its number of bytes (that is, the usual meaning of string length when each character is one byte).
