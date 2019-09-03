@@ -12,20 +12,19 @@ lua learning
       print 'not equals walternate'  -- Works fine.
     end
     ```
-1. `...` [Variable Number of Arguments](https://www.lua.org/pil/5.2.html)
+1. `...` [Variable Number of Arguments](https://www.lua.org/pil/5.2.html), [examples](https://repl.it/@bingoohuang/VariableNumberOfArguments-1)
 
-    Assume a definition like
-    
-        function g (a, b, ...) end
+    ```lua
+    local function anyOf(element, ...)
+        for _, v in ipairs({...}) do
+            if v == element then
+                return true
+            end
+        end
 
-    Then, we have the following mapping from arguments to parameters:
-    
-        CALL            PARAMETERS
-
-        g(3)             a=3, b=nil, arg={n=0}
-        g(3, 4)          a=3, b=4, arg={n=0}
-        g(3, 4, 5, 8)    a=3, b=4, arg={5, 8; n=2}
-        
+        return false
+    end
+    ```
     
     [Forwarding ... to next function  like](https://github.com/thibaultcha/lua-resty-mlcache/blob/master/lib/resty/mlcache.lua)
     
