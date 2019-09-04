@@ -12,6 +12,34 @@ lua learning
       print 'not equals walternate'  -- Works fine.
     end
     ```
+
+1.  [Strings in Lua](http://lua-users.org/wiki/StringsTutorial) for more information.
+
+    ```lua
+    -- No difference between these
+    myStr = "Hi!!"
+    myStr = 'Hi!!'
+    myStr = [[Hi!!]] -- The 'weird' way to make a string literal IMO...
+
+    -- Double quotes enclosed in single quotes    
+    myStr = 'My friend said: "Hi!!"'
+
+    -- Single quotes enclosed in double quotes
+    myStr = "My friend said: 'Hi!!'"
+
+    -- Single and double quotes enclosed in double brackets
+    myStr = [[My friend said: "What's up?"]]
+    
+    -- Nesting quotes
+    -- Double square brackets allow nesting, but they require one or more = inserted 
+    -- in the outer-most brackets to distinguish them. 
+    -- It doesn't matter how many = are inserted, as long as the number is the same in the beginning and ending brackets.
+    myStr = [=[one [[two]] one]=]      -- ok: one [[two]] one
+    myStr = [===[one [[two]] one]===]  -- ok: too one [[two]] one
+    myStr = [=[one [ [==[ one]=]       -- ok. nothing special about the inner content: one [ [==[ one
+
+    ```
+    
 1. `...` [Variable Number of Arguments](https://www.lua.org/pil/5.2.html), [examples](https://repl.it/@bingoohuang/VariableNumberOfArguments-1)
 
     ```lua
