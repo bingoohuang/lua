@@ -108,7 +108,29 @@ lua learning
     > The length operator is denoted by the unary operator #. The length of a string is its number of bytes (that is, the usual meaning of string length when each character is one byte).
 
     > The length of a table t is defined to be any integer index n such that t[n] is not nil and t[n+1] is nil; moreover, if t[1] is nil, n can be zero. For a regular array, with non-nil values from 1 to a given n, its length is exactly that n, the index of its last value. If the array has "holes" (that is, nil values between other non-nil values), then #t can be any of the indices that directly precedes a nil value (that is, it may consider any such nil value as the end of the array).
-1. todo
+
+1. [Lua里的真值与假值](https://repl.it/@bingoohuang/truefalse)
+
+    ```lua
+    -- OpenResty 中的真值与假值与坑 https://segmentfault.com/a/1190000007937895
+    -- Lua 里的真值与假值：除了 nil 和 false 为假，其他值都是真。“其他值”这个概念包括0、空字符串、空表，等等。
+    -- 在 Lua 里，通常使用 and 和 or 作为逻辑操作符。比如 true and false 返回 false，而 false or true 返回 true。
+    print("nil:", nil and true or false)
+    print("false:", false and true or false)
+    print("(空字符串):", "" and true or false)
+    print("0:", 0 and true or false)
+    print("{}:", {} and true or false)
+    ```
+   
+    结果
+    ```
+    Lua 5.1.5
+    nil:    false
+    false:  false
+    (空字符串): true
+    0:  true
+    {}: true
+    ```
 
 ##
 
