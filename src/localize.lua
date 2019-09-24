@@ -4,6 +4,11 @@
 lua localize.lua 100000 no  0.77s user 0.00s system 99% cpu 0.775 total
 ➜  Downloads time lua localize.lua 100000 yes
 lua localize.lua 100000 yes  0.58s user 0.00s system 99% cpu 0.581 total
+
+➜  Downloads time luajit localize.lua 100000 no
+luajit localize.lua 100000 no  0.02s user 0.00s system 75% cpu 0.032 total
+➜  Downloads time luajit localize.lua 100000 yes
+luajit localize.lua 100000 yes  0.02s user 0.00s system 94% cpu 0.022 total
 ]]
 
 local loop_count = tonumber(arg[1])
