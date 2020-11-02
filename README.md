@@ -1,4 +1,5 @@
 # trial-lua
+
 lua learning
 
 ## fucks
@@ -21,7 +22,7 @@ lua learning
     myStr = 'Hi!!'
     myStr = [[Hi!!]] -- The 'weird' way to make a string literal IMO...
 
-    -- Double quotes enclosed in single quotes    
+    -- Double quotes enclosed in single quotes
     myStr = 'My friend said: "Hi!!"'
 
     -- Single quotes enclosed in double quotes
@@ -29,17 +30,17 @@ lua learning
 
     -- Single and double quotes enclosed in double brackets
     myStr = [[My friend said: "What's up?"]]
-    
+
     -- Nesting quotes
-    -- Double square brackets allow nesting, but they require one or more = inserted 
-    -- in the outer-most brackets to distinguish them. 
+    -- Double square brackets allow nesting, but they require one or more = inserted
+    -- in the outer-most brackets to distinguish them.
     -- It doesn't matter how many = are inserted, as long as the number is the same in the beginning and ending brackets.
     myStr = [=[one [[two]] one]=]      -- ok: one [[two]] one
     myStr = [===[one [[two]] one]===]  -- ok: too one [[two]] one
     myStr = [=[one [ [==[ one]=]       -- ok. nothing special about the inner content: one [ [==[ one
 
     ```
-    
+
 1. `...` [Variable Number of Arguments](https://www.lua.org/pil/5.2.html), [examples](https://repl.it/@bingoohuang/VariableNumberOfArguments-1)
 
     ```lua
@@ -53,9 +54,9 @@ lua learning
         return false
     end
     ```
-    
+
     [Forwarding ... to next function  like](https://github.com/thibaultcha/lua-resty-mlcache/blob/master/lib/resty/mlcache.lua)
-    
+
     ```lua
     function _M:get(key, opts, cb, ...)
         return run_callback(self, key, namespaced_key, data, ttl, neg_ttl,
@@ -98,11 +99,11 @@ lua learning
         end,
     }
     ```
-    
+
 1. [What does # mean in Lua?](https://stackoverflow.com/questions/17974622/what-does-mean-in-lua)
-    
+
     [hash/hash key/hash mark #](https://zh.wikipedia.org/wiki/%E4%BA%95%E8%99%9F#cite_ref-2)
-    
+
     > That is the [length operator](http://www.lua.org/manual/5.1/manual.html#2.5.5):
 
     > The length operator is denoted by the unary operator #. The length of a string is its number of bytes (that is, the usual meaning of string length when each character is one byte).
@@ -121,7 +122,7 @@ lua learning
     print("0:", 0 and true or false)
     print("{}:", {} and true or false)
     ```
-   
+
     结果
     ```
     Lua 5.1.5
@@ -132,6 +133,40 @@ lua learning
     {}: true
     ```
 
+## [pairs and ipairs](https://repl.it/@bingoohuang/diffpairsipairs)
+
+```lua
+-- Lua pairs 和 ipairs 的区别 https://www.runoob.com/note/11315
+-- pairs: 迭代 table，可以遍历表中所有的 key 可以返回 nil
+-- ipairs: 迭代数组，不能返回 nil,如果遇到 nil 则退出
+
+local tab = {
+	d = "d", [1] = "a", [3] = "b", [4] = "c",
+}
+
+print("-----测试pairs:")
+for k,v in pairs(tab) do     -- 输出 "a" ,"b", "c"  ,
+	print(k, "=", tab[k] )
+end
+
+
+print("-----测试ipairs:")
+for i,v in ipairs(tab) do    -- 输出 "a" ,k=2时断开
+	print(i, "=", tab[i] )
+end
+```
+
+输出:
+
+```bash
+-----测试pairs:
+1   =   a
+d   =   d
+4   =   c
+3   =   b
+-----测试ipairs:
+1   =   a
+```
 ##
 
 ```bash
@@ -165,7 +200,6 @@ with the `--lua-dir` flag, like this:
 Installing https://luarocks.org/luasocket-3.0rc1-2.src.rock
 
 luasocket 3.0rc1-2 is now installed in /usr/local (license: MIT)
-
 ```
 
 ## Hacks
@@ -173,14 +207,14 @@ luasocket 3.0rc1-2 is now installed in /usr/local (license: MIT)
 1. [block](https://www.lua.org/pil/4.2.html)
     * implicit blocks:  the body of a control structure, the body of a function, or a chunk (the file or string with the code where the variable is declared).
     * explicit blocks:  do-end  blocks
-    
+
 1. [pass by value or reference?](https://stackoverflow.com/questions/6128152/function-variable-scope-pass-by-value-or-reference)
 
     > There are eight basic types in Lua: nil, boolean, number, string, function, userdata, thread, and table. ...
 
-    > Lua's function, table, userdata and thread (coroutine) types are passed by reference. 
+    > Lua's function, table, userdata and thread (coroutine) types are passed by reference.
 
-    > The other types (nil, booleans, numbers and strings) are passed by value. 
+    > The other types (nil, booleans, numbers and strings) are passed by value.
 
     > Or as some people like to put it; all types are passed by value, but function, table, userdata and thread are reference types.
 
@@ -192,7 +226,7 @@ luasocket 3.0rc1-2 is now installed in /usr/local (license: MIT)
        return setmetatable(o, self)
     end
    ```
-   
+
    > This is a common hack to save some memory.
    > non-hack (three table) version：
    ```lua
