@@ -167,7 +167,37 @@ d   =   d
 -----测试ipairs:
 1   =   a
 ```
-##
+
+## 别被ES2015中的简短属性名（Shorthand property names）带偏了
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer
+
+```javascript
+var a = 'foo', b = 42, c = {};
+var o = {a: a, b: b, c: c};
+
+// Shorthand property names (ES2015)
+var o = {a, b, c};
+```
+
+https://www.lua.org/pil/3.6.html
+
+```lua
+local a,b,c = "a","b","c"
+tab = {a, b, c}
+-- 相当于 tab = {[1]  = a, [2]  = b, [3] = c}
+
+print("-----测试pairs:")
+-- 输出：
+-- 1   =   a
+-- 2   =   b
+-- 3   =   c
+for k,v in pairs(tab) do
+	print(k, "=", tab[k] )
+end
+```
+
+## 一些脚本
 
 ```bash
 ➜  ~ export http_proxy=http://127.0.0.1:9999; export https_proxy=http://127.0.0.1:9999;
