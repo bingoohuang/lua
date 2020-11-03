@@ -184,7 +184,7 @@ https://www.lua.org/pil/3.6.html
 
 ```lua
 local a,b,c = "a","b","c"
-tab = {a, b, c}
+local tab = {a, b, c}
 -- 相当于 tab = {[1]  = a, [2]  = b, [3] = c}
 
 print("-----测试pairs:")
